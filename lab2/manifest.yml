@@ -1,0 +1,6 @@
+---
+applications:
+- name: acme-monolith
+  memory: 768MB
+  random-route: true
+  path: target/monolith-0.0.1-SNAPSHOT.jar
