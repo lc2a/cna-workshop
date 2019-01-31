@@ -13,6 +13,11 @@ import javax.servlet.http.HttpServletResponse;
 public class AcmeController {
     private static Logger log = LoggerFactory.getLogger(AcmeController.class);
 
+    private final RestTemplate restTemplate;
+    public AcmeController(RestTemplateBuilder builder) {
+        restTemplate = builder.build();
+    }
+
     @CrossOrigin(origins = {"https://acme-ui.apps.dalycity.cf-app.com", "http://acme-ui.apps.dalycity.cf-app.com"})
     @GetMapping("/service/greet/{name}")
     public String sayHello(@PathVariable String name) {
@@ -22,7 +27,6 @@ public class AcmeController {
     @CrossOrigin(origins = {"https://acme-ui.apps.dalycity.cf-app.com", "http://acme-ui.apps.dalycity.cf-app.com"})
     @GetMapping("/service/quote")
     public String getQuote() {
-        RestTemplate restTemplate = new RestTemplate();
         String stock = restTemplate.getForObject("http://stocks-service.apps.dalycity.cf-app.com/recommendation",
                 String.class);
         return String.format("Today's top stock: %s", stock);
