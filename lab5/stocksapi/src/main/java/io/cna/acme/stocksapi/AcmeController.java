@@ -18,13 +18,11 @@ public class AcmeController {
         restTemplate = builder.build();
     }
 
-    @CrossOrigin(origins = {"https://acme-ui.apps.dalycity.cf-app.com", "http://acme-ui.apps.dalycity.cf-app.com"})
     @GetMapping("/service/greet/{name}")
     public String sayHello(@PathVariable String name) {
         return String.format("Hello %s! \n Use ACME's predictive stock recommendation and retire early. \n", name);
     }
 
-    @CrossOrigin(origins = {"https://acme-ui.apps.dalycity.cf-app.com", "http://acme-ui.apps.dalycity.cf-app.com"})
     @GetMapping("/service/quote")
     public String getQuote() {
         String stock = restTemplate.getForObject("http://stocks-service.apps.dalycity.cf-app.com/recommendation",
