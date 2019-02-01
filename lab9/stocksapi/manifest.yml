@@ -1,0 +1,9 @@
+---
+applications:
+- name: stocksapi
+  memory: 768MB
+  path: target/stocksapi-0.0.1-SNAPSHOT.jar
+  services:
+  - service-registry
+  - config-server
+
