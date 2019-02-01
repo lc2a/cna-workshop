@@ -5,6 +5,8 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.web.client.RestTemplateBuilder;
+import org.springframework.cloud.client.discovery.EnableDiscoveryClient;
+import org.springframework.cloud.client.loadbalancer.LoadBalanced;
 import org.springframework.cloud.context.config.annotation.RefreshScope;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.client.RestTemplate;
@@ -13,6 +15,7 @@ import javax.servlet.http.HttpServletResponse;
 
 @RestController
 @RefreshScope
+@EnableDiscoveryClient
 public class AcmeController {
     private static Logger log = LoggerFactory.getLogger(AcmeController.class);
 
@@ -22,6 +25,7 @@ public class AcmeController {
     @Value("${stocks-service-url:http://stocks-service}")
     String stocksServiceURL;
 
+    @LoadBalanced
     private final RestTemplate restTemplate;
     public AcmeController(RestTemplateBuilder builder) {
         restTemplate = builder.build();
