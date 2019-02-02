@@ -1,0 +1,10 @@
+---
+applications:
+- name: stocks-api
+  memory: 768MB
+  path: target/stocksapi-0.0.1-SNAPSHOT.jar
+  services:
+  - acme-service-registry
+  - acme-circuit-breaker
+  
+
