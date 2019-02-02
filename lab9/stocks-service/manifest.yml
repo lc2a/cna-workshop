@@ -1,8 +1,10 @@
 ---
 applications:
-- name: stocks-service
+- name: stocks-service-lab9
   memory: 768MB
   path: target/stocks-service-0.0.1-SNAPSHOT.jar
+  routes:
+  - route: stocks-service.apps.dalycity.cf-app.com/
   services:
   - service-registry
   env:

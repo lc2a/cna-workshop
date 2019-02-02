@@ -1,1 +1,1 @@
-cf push acme-ui -m 64m
+cf push acme-ui-lab3 -m 64m --hostname acme-ui

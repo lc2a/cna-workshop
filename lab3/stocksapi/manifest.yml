@@ -1,5 +1,7 @@
 ---
 applications:
-- name: stocksapi
+- name: stocksapi-lab3
   memory: 768MB
   path: target/stocksapi-0.0.1-SNAPSHOT.jar
+  routes:
+  - route: stocksapi.apps.dalycity.cf-app.com
