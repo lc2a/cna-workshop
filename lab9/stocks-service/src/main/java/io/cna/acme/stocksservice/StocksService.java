@@ -24,6 +24,7 @@ public class StocksService {
 
     @GetMapping("/recommendation")
     public String getRecommendation() {
+        System.out.println("Generating recommendation");
         return sRepo.findRandomStock().toString();
     }
 }

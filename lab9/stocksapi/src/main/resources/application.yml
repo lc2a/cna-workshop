@@ -1,2 +1,4 @@
 stocksapi:
   banner: Use ACME's predictive stock recommendation and retire early.
+
+stocks-service-url: https://stocks-service

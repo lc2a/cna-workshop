@@ -10,26 +10,23 @@ import org.springframework.cloud.client.loadbalancer.LoadBalanced;
 import org.springframework.cloud.context.config.annotation.RefreshScope;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.client.RestTemplate;
+import org.springframework.web.util.UriComponentsBuilder;
 
 import javax.servlet.http.HttpServletResponse;
 
 @RestController
 @RefreshScope
-@EnableDiscoveryClient
 public class AcmeController {
     private static Logger log = LoggerFactory.getLogger(AcmeController.class);
 
+    private final AcmeService acme;
+
+    public AcmeController(AcmeService acme) {
+        this.acme = acme;
+    }
+
     @Value(value = "${stocksapi.banner}")
     private String banner;
-
-    @Value("${stocks-service-url:http://stocks-service}")
-    String stocksServiceURL;
-
-    @LoadBalanced
-    private final RestTemplate restTemplate;
-    public AcmeController(RestTemplateBuilder builder) {
-        restTemplate = builder.build();
-    }
 
     @GetMapping("/service/greet/{name}")
     public String sayHello(@PathVariable String name) {
@@ -38,8 +35,9 @@ public class AcmeController {
 
     @GetMapping("/service/quote")
     public String getQuote() {
-        String stock = restTemplate.getForObject(stocksServiceURL.concat("/recommendation"),
-                String.class);
+        String stock = acme.recommend();
+        System.out.printf("stock form http endpoint = %s%n", stock);
+
         return String.format("Today's top stock: %s", stock);
     }
 

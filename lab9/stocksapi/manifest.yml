@@ -1,11 +1,13 @@
 ---
 applications:
-- name: stocksapi
+- name: stocksapi3
   memory: 768MB
   path: target/stocksapi-0.0.1-SNAPSHOT.jar
   services:
   - service-registry
-  - config-server
+  routes:
+  - route: stocksapi.apps.dalycity.cf-app.com
   env:
-  - TRUST_CERTS: api.sys.dalycity.cf-app.com
+    TRUST_CERTS: api.sys.dalycity.cf-app.com
+
 
