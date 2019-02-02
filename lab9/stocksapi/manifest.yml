@@ -6,4 +6,6 @@ applications:
   services:
   - service-registry
   - config-server
+  env:
+  - TRUST_CERTS: api.sys.dalycity.cf-app.com
 

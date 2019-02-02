@@ -1,0 +1,24 @@
+stocks:
+  api:
+    endpoint: http://stocksapi.apps.dalycity.cf-app.com
+  ui:
+    endpoint: http://acme-ui.apps.dalycity.cf-app.com
+spring:
+  application:
+    name: acme
+  cloud:
+    gateway:
+      routes:
+      - id: stocks_all_api
+        uri: ${stocks.api.endpoint}
+        predicates:
+        - Path=/stocks/**
+        filters:
+        - RewritePath=/stocks/(?<path>.*), /$\{path}
+      - id: stocks_ui_root
+        uri: ${stocks.ui.endpoint}
+        predicates:
+        - Path=/**
+
+
+
