@@ -12,10 +12,10 @@ function get(theUrl, callback)
 
 function nameAndStock() {
     var name = document.getElementById("name").value;
-    get("http://stocksapi.apps.dalycity.cf-app.com/service/greet/"+name, function (response) {
+    get("https://stocksapi.apps.dalycity.cf-app.com/service/greet/"+name, function (response) {
         document.getElementById("hello").innerText = response;
     })
-    get("http://stocksapi.apps.dalycity.cf-app.com/service/quote", function (response) {
+    get("https://stocksapi.apps.dalycity.cf-app.com/service/quote", function (response) {
         document.getElementById("stock").innerText = response;
     })
 }
