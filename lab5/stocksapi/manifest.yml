@@ -1,5 +1,9 @@
 ---
 applications:
-- name: stocksapi
+- name: stocksapi-lab5
   memory: 768MB
   path: target/stocksapi-0.0.1-SNAPSHOT.jar
+  routes:
+  - route: stocksapi.((apps-domain))
+  env:
+    TRUST_CERTS: ((capi-uri))
