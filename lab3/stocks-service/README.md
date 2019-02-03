@@ -1,3 +1,7 @@
+#Business logic for predictive stocks recommendation
+
+mvn clean package
+
 Before you cf push, please make changes to following in the vars.yml
 1. Set apps-domain to your apps domain
 2. Set capi-uri to your API endpoint. You can locate it in Apps Manager > Tools
