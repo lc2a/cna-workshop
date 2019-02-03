@@ -1,11 +1,11 @@
 ---
 applications:
-- name: stocks-service-lab9
+- name: stocks-service-lab((lab-number))
   memory: 768MB
   path: target/stocks-service-0.0.1-SNAPSHOT.jar
   routes:
-  - route: stocks-service.apps.dalycity.cf-app.com/
-  services:
-  - service-registry
+  - route: stocks-service.((apps-domain))
   env:
-    TRUST_CERTS: api.sys.dalycity.cf-app.com
+    TRUST_CERTS: ((capi-uri))
+  services:
+  - ((eureka-service))

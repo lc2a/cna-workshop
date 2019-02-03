@@ -1,8 +1,0 @@
----
-applications:
-- name: acme
-  memory: 768MB
-  path: target/stocks-cloud-gateway-0.0.1-SNAPSHOT.jar
-  env:
-    ACME_UI_ENDPOINT: http://acme-ui.apps.dalycity.cf-app.com
-    STOCKS_API_ENDPOINT: https://stocksapi.apps.dalycity.cf-app.com

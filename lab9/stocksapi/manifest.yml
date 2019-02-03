@@ -1,13 +1,11 @@
 ---
 applications:
-- name: stocksapi3
+- name: stocksapi-lab((lab-number))
   memory: 768MB
   path: target/stocksapi-0.0.1-SNAPSHOT.jar
-  services:
-  - service-registry
   routes:
-  - route: stocksapi.apps.dalycity.cf-app.com
+  - route: stocksapi.((apps-domain))
   env:
-    TRUST_CERTS: api.sys.dalycity.cf-app.com
-
-
+    TRUST_CERTS: ((capi-uri))
+  services:
+  - ((eureka-service))
