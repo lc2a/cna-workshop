@@ -7,3 +7,5 @@ applications:
   - route: stocksapi.((apps-domain))
   env:
     TRUST_CERTS: ((capi-uri))
+  services:
+  - ((config-service))
