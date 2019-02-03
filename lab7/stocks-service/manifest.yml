@@ -1,7 +1,0 @@
----
-applications:
-- name: stocks-service
-  memory: 768MB
-  path: target/stocks-service-0.0.1-SNAPSHOT.jar
-  services:
-  - acme-mysql
